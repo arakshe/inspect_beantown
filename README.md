@@ -35,3 +35,8 @@ For the Future:
 - Shell of the website
 - SQL querying
 - API work
+
+let's code it up 
+
+## Setting up the project
+- To get the package.lock-json, type npm init, answer the questions
