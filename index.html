@@ -1,11 +1,58 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>My first web page.</p>
-  </body>
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+  <!-- Import Mapbox GL JS -->
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js'></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      /* position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%; */
+      width: 80%;
+      height: 800px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id='help'>
+    <p>"Hello World!"</p>
+  </div>
+  <div id='map'></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoicG9vanByYWIiLCJhIjoiY2x0MGg5djVuMHltdTJqcGh5d2Q5Z2JpcyJ9.pAiXn_qtdKT8LFnw0hzMCw'; // set the access token
+
+    const map = new mapboxgl.Map({
+      container: 'map', // The container ID
+      style: 'mapbox://styles/mapbox/light-v11', // The map style to use
+      center: [-105.0178157, 39.737925], // Starting position [lng, lat]
+      zoom: 12 // Starting zoom level
+    });
+    map.on('load', () => {
+  const geocoder = new MapboxGeocoder({
+    // Initialize the geocoder
+    accessToken: mapboxgl.accessToken, // Set the access token
+    mapboxgl: mapboxgl, // Set the mapbox-gl instance
+    zoom: 13, // Set the zoom level for geocoding results
+    placeholder: 'Enter an address or place name', // This placeholder text will display in the search bar
+    bbox: [-105.116, 39.679, -104.898, 39.837] // Set a bounding box
+    /* The bbox parameter in this code sets a bounding box, which means that the geocoder will not return any results that are outside of the specified area. */
+  });
+  // Add the geocoder to the map
+  map.addControl(geocoder, 'top-left'); // Add the search box to the top left
+});
+  </script>
+</body>
 </html>
