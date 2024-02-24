@@ -1,4 +1,4 @@
-# foodtruckapi
+# inspect beantown
 HackBeanPot Application
 INSPECT BEANTOWN: for all your health and safety needs
 BeanTown X HackBeanPot
