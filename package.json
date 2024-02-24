@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/poojprab/INSPECTBEANTOWN/issues"
   },
-  "homepage": "https://github.com/poojprab/INSPECTBEANTOWN#readme"
+  "homepage": "https://github.com/poojprab/INSPECTBEANTOWN#readme",
+  "keywords": [],
+  "dependencies": {
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5"
+  }
 }
