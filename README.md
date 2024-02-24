@@ -4,7 +4,11 @@ INSPECT BEANTOWN: for all your health and safety needs
 BeanTown X HackBeanPot
 
 ## Planned Tech Stack 
+### Frontend
 - HTML, CSS, JavaScript
+### Backend
+- Node.js
+- Express
 - https://docs.mapbox.com/mapbox-gl-js/example/set-config-property === This is mapbox: Immersive Maps for the Web
 - Use this API to get food inspection details === http://docs.ckan.org/en/2.9/api/
 - Yelp API - to get reviews
