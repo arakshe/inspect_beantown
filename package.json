@@ -18,6 +18,7 @@
   "homepage": "https://github.com/poojprab/INSPECTBEANTOWN#readme",
   "keywords": [],
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.2",
     "axios": "^1.6.7",
     "dotenv": "^16.4.5"
   }
