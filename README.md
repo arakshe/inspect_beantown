@@ -40,3 +40,11 @@ let's code it up
 
 ## Setting up the project
 - To get the package.lock-json, type npm init, answer the questions
+mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN;
+- create .env file and put all secret passwords in there
+- Rest API communicates data, a website really just displays something
+
+
+- Get the coordinates
+- Query an API that will get all the information inside the bounding box
+    - when the user clicks on it, itll show all the information
