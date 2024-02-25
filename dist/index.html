@@ -89,7 +89,7 @@
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
             <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Interactive Map</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -210,14 +210,24 @@
                         ); // Create a new LngLat object (https://docs.mapbox.com/mapbox-gl-js/api/#lnglatlike)
                         //const foundBusinesses = await findBusiness(properties.businessname, properties.address)
                         //console.log(foundBusinesses)
+                        var grade = "";
+                        var image = "";
+                        if (properties.businessname == "CUPPACOFFEE") {
+                            grade = "A";
+                            image = "assets/img/portfolio/cupca.png"
+                        } else {
+                            grade = "B";
+                            image = "assets/img/portfolio/sabrosos.jpeg"
+                        }
                         const content = (`<div class="mainheader">
             <h3>${properties.businessname}</h3>
             <h4>${properties.descript}</h4>
-            <img src="assets/img/portfolio/image2.png" alt="Computer Man" style="width:48px;height:48px;"> </img>
-            <p>${properties.address}</p>
-            <p>${(
+            <h4>Grade: ${grade}</h4>
+            <img src=${image} alt="Computer Man" style="width:200px;height:200px;"> </img>
+            <h4>${properties.address}</h4>
+            <h4>${(
                                 obj.distance / 1609.344
-                            ).toFixed(2)} mi. from location</p>
+                            ).toFixed(2)} mi. from location</h4>
             `);
 
                         // const content = `<h3>${properties.licstatus}</h3>`;
@@ -306,20 +316,35 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- About Section Content-->
-            <div class="row">
-                <div class="col-lg-4 ms-auto">
+            <div class="profile-row">
+                <div class="profile">
+                    <img src="assets/img/portfolio/image2.png" alt="Computer Man" style="width:400px;height:400px;"> </img>
+                    <h1>Sierra Welsch</h1>
+                    <h5>Baxpert : Backend Brawler</h5>
+                </div>
+                <div class="profile">
+                    <img src="assets/img/portfolio/image1.jpg" alt="Computer Man" style="width:400px;height:400px;"> </img>
+                    <h1>Pooja Prabu</h1>
+                    <h5>Maxpert : MapBoxer</h5>
+                </div>
+                <div class="profile">
+                    <img src="assets/img/portfolio/image3.jpg" alt="Computer Man" style="width:400px;height:400px;"> </img>
+                    <h1>Ananya Rath</h1>
+                    <h5>CSVExpert : CSV Master Manipulator</h5>
+                </div>
+                <!-- <div class="col-lg-4 ms-auto">
                     <p class="lead">We are students at Northeastern University.</p>
                 </div>
                 <div class="col-lg-4 me-auto">
                     <p class="lead">You can create your own custom avatar for the masthead, change the icon in the
                         dividers, and add your email address to the contact form to make it fully functional!</p>
-                </div>
+                </div> -->
             </div>
             <!-- About Section Button-->
             <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
+                <a class="btn btn-xl btn-outline-light" href="https://data.boston.gov/dataset/food-establishment-inspections/resource/4582bec6-2b4f-4f9e-bc55-cbaa73117f4c">
                     <i class="fas fa-download me-2"></i>
-                    Free Download!
+                    Download our Data!
                 </a>
             </div>
         </div>
@@ -328,7 +353,7 @@
     <section class="page-section" id="contact">
         <div class="container">
             <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Thoughts?</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -357,16 +382,16 @@
                         <div class="form-floating mb-3">
                             <input class="form-control" id="email" type="email" placeholder="name@example.com"
                                 data-sb-validations="required,email" />
-                            <label for="email">Email address</label>
-                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            <label for="email">Routing Number</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">An routing number is required.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Number is not valid.</div>
                         </div>
                         <!-- Phone number input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
+                            <input class="form-control" id="phone" type="tel" placeholder="12 456 7890"
                                 data-sb-validations="required" />
-                            <label for="phone">Phone number</label>
-                            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
+                            <label for="phone">Social Security Number</label>
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">An SSN is required.
                             </div>
                         </div>
                         <!-- Message input-->
@@ -413,9 +438,9 @@
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h4 class="text-uppercase mb-4">Location</h4>
                     <p class="lead mb-0">
-                        2215 John Daniel Drive
+                        NORTHEASTERN UNIVERSITY 
                         <br />
-                        Clark, MO 65243
+                        BOSTON MASSACHUSETTES 02115
                     </p>
                 </div>
                 <!-- Footer Social Icons-->
@@ -442,7 +467,7 @@
     </footer>
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
-        <div class="container"><small>Copyright &copy; Your Website 2023</small></div>
+        <div class="container"><small>Copyright &copy; S.P.A. 2024</small></div>
     </div>
     <!-- Portfolio Modals-->
     <!-- Portfolio Modal 1-->

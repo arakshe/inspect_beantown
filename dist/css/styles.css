@@ -139,7 +139,7 @@ h2, .h2 {
 }
 
 h3 {
-  background-color: #CA3F3F;
+  background-color: #8b2050;
   border-color: #101214;
   text-align: center;
 }
@@ -685,6 +685,15 @@ progress {
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
+}
+
+.profile-row {
+  display: flex;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .col {
