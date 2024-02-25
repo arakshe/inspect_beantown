@@ -71,7 +71,8 @@
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="assets/img/hamburgericon.png" alt="..." /> <!-- replace this with the actual hamburger-->
+            <img class="masthead-avatar mb-5" src="assets/img/hamburgericon.png" alt="..." />
+            <!-- replace this with the actual hamburger-->
             <!-- Masthead Heading-->
             <h1 class="masthead-heading text-uppercase mb-0">INSPECT BEANTOWN</h1>
             <!-- Icon Divider-->
@@ -102,7 +103,7 @@
                 const map = new mapboxgl.Map({
                     container: 'map', // The container ID
                     style: 'mapbox://styles/mapbox/light-v11', // The map style to use
-                    center: [-105.0178157, 39.737925], // Starting position [lng, lat]
+                    center: [-71.038887, 42.364506], // Starting position [lng, lat]
                     zoom: 12 // Starting zoom level
                 });
                 map.on('load', () => {
@@ -112,7 +113,7 @@
                         mapboxgl: mapboxgl, // Set the mapbox-gl instance
                         zoom: 13, // Set the zoom level for geocoding results
                         placeholder: 'Enter an address or place name', // This placeholder text will display in the search bar
-                        bbox: [-105.116, 39.679, -104.898, 39.837] // Set a bounding box
+                        bbox: [-71.19124, 42.227911, -70.648072, 42.450118] // Set a bounding box
                         /* The bbox parameter in this code sets a bounding box, which means that the geocoder will not return any results that are outside of the specified area. */
                     });
                     // Add the geocoder to the map
@@ -122,7 +123,7 @@
                     geocoder.on('result', async (event) => {
                         // When the geocoder returns a result
                         const point = event.result.center; // Capture the result coordinates
-                        const tileset = 'poojprab.5d1umanf'; // replace this with the ID of the tileset you created
+                        const tileset = 'poojprab.819ctsc7'; // replace this with the ID of the tileset you created
                         const radius = 1609; // 1609 meters is roughly equal to one mile
                         const limit = 50; // The maximum amount of results to return
 
@@ -171,25 +172,25 @@
                             'circle-color': [
                                 // Specify the color each circle should be
                                 'match', // Use the 'match' expression: https://docs.mapbox.com/style-spec/reference/expressions/#match
-                                ['get', 'STORE_TYPE'], // Use the result 'STORE_TYPE' property
-                                'Small Grocery Store',
+                                ['get', 'licstatus'], // Use the result 'STORE_TYPE' property
+                                'Active',
                                 '#008000',
-                                'Supercenter',
-                                '#008000',
-                                'Superette',
-                                '#008000',
-                                'Supermarket',
-                                '#008000',
-                                'Warehouse Club Store',
-                                '#008000',
-                                'Specialty Food Store',
-                                '#9ACD32',
-                                'Convenience Store',
-                                '#FF8C00',
-                                'Convenience Store With Gas',
-                                '#FF8C00',
-                                'Pharmacy',
-                                '#FF8C00',
+                                // 'Supercenter',
+                                // '#008000',
+                                // 'Superette',
+                                // '#008000',
+                                // 'Supermarket',
+                                // '#008000',
+                                // 'Warehouse Club Store',
+                                // '#008000',
+                                // 'Specialty Food Store',
+                                // '#9ACD32',
+                                // 'Convenience Store',
+                                // '#FF8C00',
+                                // 'Convenience Store With Gas',
+                                // '#FF8C00',
+                                // 'Pharmacy',
+                                // '#FF8C00',
                                 '#FF0000' // any other store type
                             ]
                         }
@@ -197,19 +198,29 @@
 
                     const popup = new mapboxgl.Popup(); // Initialize a new popup
 
-                    map.on('mouseenter', 'tilequery-points', (event) => {
+                    map.on('click', 'tilequery-points', async (event) => {
+
+
                         map.getCanvas().style.cursor = 'pointer'; // When the cursor enters a feature, set it to a pointer
                         const properties = event.features[0].properties;
                         const obj = JSON.parse(properties.tilequery); // Get the feature's tilequery object (https://docs.mapbox.com/api/maps/#response-retrieve-features-from-vector-tiles)
                         const coordinates = new mapboxgl.LngLat(
-                            properties.longitude,
-                            properties.latitude
+                            properties.Longitude,
+                            properties.Latitude
                         ); // Create a new LngLat object (https://docs.mapbox.com/mapbox-gl-js/api/#lnglatlike)
-
-                        const content = `<h3>${properties.STORE_NAME}</h3><h4>${properties.STORE_TYPE
-                            }</h4><p>${properties.ADDRESS_LINE1}</p><p>${(
+                        //const foundBusinesses = await findBusiness(properties.businessname, properties.address)
+                        //console.log(foundBusinesses)
+                        const content = (`<div class="mainheader">
+            <h3>${properties.businessname}</h3>
+            <h4>${properties.descript}</h4>
+            <img src="assets/img/portfolio/image2.png" alt="Computer Man" style="width:48px;height:48px;"> </img>
+            <p>${properties.address}</p>
+            <p>${(
                                 obj.distance / 1609.344
-                            ).toFixed(2)} mi. from location</p>`;
+                            ).toFixed(2)} mi. from location</p>
+            `);
+
+                        // const content = `<h3>${properties.licstatus}</h3>`;
 
                         popup
                             .setLngLat(coordinates) // Set the popup at the given coordinates
@@ -297,9 +308,7 @@
             <!-- About Section Content-->
             <div class="row">
                 <div class="col-lg-4 ms-auto">
-                    <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download
-                        includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS
-                        stylesheets for easy customization.</p>
+                    <p class="lead">We are students at Northeastern University.</p>
                 </div>
                 <div class="col-lg-4 me-auto">
                     <p class="lead">You can create your own custom avatar for the masthead, change the icon in the
@@ -662,7 +671,36 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+
     <script src="js/scripts.js"></script>
+    <script>
+
+// async function searchBuisness(term, location) {
+//     const token = "CUyHOL0RBcotmnoy9dy5S6YuO2FYgeGQI2xD_c2grk203vldH3la_zsiOhLekIiT3XMHByVXwwHyo4I7fJUvLjOw5Vb4rBTcRT8XTNCoeBoZxUAGrh7wnEeLAz3aZXYx"
+//     try{
+//         const response = await fetch(`https://api.yelp.com/v3/businesses/search?term=110 Grill&location=Dorchester, Boston, MA`, {
+//             method: "GET",
+//             headers: {
+//                 Authorization: `Bearer ${token}`,
+//                 "Content-Type": "application/json",
+//             }
+//         });
+//         return response.data
+//     }catch(e){
+//         console.error('Error', e);
+//     }
+// }
+
+// async function findBusiness (businessName, location) {
+//     const buisnesses = await searchBuisness('110 Grill', 'Dorchester, Boston, MA');
+//     const filteredBusinesses = buisnesses.businesses.filter(business => {
+//         // Check if the business name contains '110 Grill' and location matches 'Dorchester, Boston, MA'
+//         return business.name.includes('110 Grill');
+//     });
+//     return filteredBusinesses
+// }
+    </script>
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <!-- * *                               SB Forms JS                               * *-->
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
