@@ -1,6 +1,6 @@
 import csv
 from datetime import datetime
-# Define the path to your CSV file
+# Define path CSV file
 csv_file_path = 'inspectboston_new.csv'
 # Function to parse the date column and find the most recent date for Milkweed entries
 def parse_column(csv_file, name):
